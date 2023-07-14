@@ -32,9 +32,22 @@ const Expenses = (props) => {
     );
   }
 
+  const availData = [2022, 2021, 2020, 2019].filter(
+    (el) => el != +filteredYear
+  );
+
+  let text;
+
+  for (const items of availData) {
+    text += `, ${items}`;
+  }
+
   return (
     <div>
       <Card className="expenses">
+        <p style={{ color: "#fff", textAlign: "center" }}>
+          Data for {...text} is hidden!
+        </p>
         <ExpensesFilter
           selected={filteredYear}
           onChangeFilter={filteredChangeHandler}
