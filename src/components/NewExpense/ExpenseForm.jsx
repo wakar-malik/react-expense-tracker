@@ -5,54 +5,44 @@ function ExpenseForm() {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
-  // const [data, setData] = useState({ title: "", amount: "", date: "" });
-
-  console.log(enteredTitle, enteredAmount, enteredDate);
-  // console.log(data);
 
   const titleHandler = (e) => {
     setEnteredTitle(e.target.value);
-    // setData((prevState) => ({ ...prevState, title: e.target.value }));
   };
 
   const amountHandler = (e) => {
     setEnteredAmount(e.target.value);
-    // setData((prevState) => ({ ...prevState, amount: e.target.value }));
   };
 
   const dateHandler = (e) => {
     setEnteredDate(e.target.value);
-    // setData((prevState) => ({ ...prevState, date: e.target.value }));
   };
 
-  const inputChangeHandler = (identifier, value) => {
-    if (identifier === "title") {
-      setEnteredTitle(value);
-    } else if (identifier === "amount") {
-      setEnteredAmount(value);
-    } else if (identifier === date) {
-      setEnteredDate(value);
-    }
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const expenseData = {
+      title: enteredTitle,
+      amount: enteredAmount,
+      date: new Date(enteredDate),
+    };
+
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
 
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input
-            type="text"
-            value={enteredTitle}
-            // value={data.title}
-            // onChange={(e) => inputChangeHandler("title", e.target.value)}
-            onChange={titleHandler}
-          />
+          <input type="text" value={enteredTitle} onChange={titleHandler} />
         </div>
 
         <div className="new-expense__control">
           <label>Amount</label>
           <input
-            // value={data.amount}
             value={enteredAmount}
             type="number"
             min="0.01"
@@ -64,7 +54,6 @@ function ExpenseForm() {
         <div className="new-expense__control">
           <label>Date</label>
           <input
-            // value={data.date}
             value={enteredDate}
             type="date"
             min="2019-01-01"
