@@ -25,6 +25,16 @@ function ExpenseForm() {
     // setData((prevState) => ({ ...prevState, date: e.target.value }));
   };
 
+  const inputChangeHandler = (identifier, value) => {
+    if (identifier === "title") {
+      setEnteredTitle(value);
+    } else if (identifier === "amount") {
+      setEnteredAmount(value);
+    } else if (identifier === date) {
+      setEnteredDate(value);
+    }
+  };
+
   return (
     <form>
       <div className="new-expense__controls">
@@ -34,6 +44,7 @@ function ExpenseForm() {
             type="text"
             value={enteredTitle}
             // value={data.title}
+            // onChange={(e) => inputChangeHandler("title", e.target.value)}
             onChange={titleHandler}
           />
         </div>
