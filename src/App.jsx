@@ -28,7 +28,7 @@ const App = () => {
   const [list, updateList] = useState(EXPENSE_DATA);
 
   const addExpenseHandler = (expense) => {
-    updateList((prevList) => [data, ...prevList]);
+    updateList((prevList) => [expense, ...prevList]);
     console.log(data);
   };
 
