@@ -4,12 +4,12 @@ import ExpenseForm from "./ExpenseForm";
 
 function NewExpense(props) {
   const onSaveExpenseDataHandler = (enteredExpenseData) => {
-    const expenseDate = {
+    const expenseData = {
       ...enteredExpenseData,
       id: Math.random().toString(),
     };
 
-    props.onAddExpense(expenseDate);
+    props.onAddExpense(expenseData);
   };
 
   return (
