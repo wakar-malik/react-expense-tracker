@@ -11,19 +11,19 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
-  const filteredList = props.items.filter((el) => {
+  const filteredExpenses = props.items.filter((el) => {
     return el.date.getFullYear() === +filteredYear;
   });
 
   let listExpense;
 
-  if (filteredList.length > 0) {
-    listExpense = filteredList.map((el) => (
+  if (filteredExpenses.length > 0) {
+    listExpense = filteredExpenses.map((el) => (
       <ExpenseItem
+        key={el.id}
         title={el.title}
         amount={el.amount}
         date={el.date}
-        key={el.id}
       />
     ));
   } else {
